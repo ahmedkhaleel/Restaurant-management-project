@@ -9,7 +9,7 @@
             <div class=" col-md-8">
                 <i class="fas fa-hamburger"></i>
                  Menus
-                <a href="{{route('category.create')}}" class="btn btn-success btn-sm text-white float-right" ><i class="fas fa-plus"></i> Create Menu</a>
+                <a href="{{route('menu.create')}}" class="btn btn-success btn-sm text-white float-right" ><i class="fas fa-plus"></i> Create Menu</a>
                 <hr>
 
                 @if (session()->has('status'))
