@@ -8,15 +8,15 @@
 
             <div class=" col-md-8">
                 <i class="fas fa-bars"></i>
-                Create a Menu
+                    Edit a Menu
                 <hr>
-                <form action="{{route('menu.store')}}"  method="POST" enctype="multipart/form-data">
+                <form action="{{route('menu.update',[$menu->id])}}"  method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('post')
+                    @method('PUT')
                     <div class="form-group">
-                    <label for="name">Menu Name</label>
+                        <label for="name">Menu Name</label>
 
-                            <input type="text" name="name"  class="form-control @error('name') is-invalid @enderror" placeholder="Menu Name ....  ....">
+                        <input value="{{$menu->name}}" type="text" name="name"  class="form-control @error('name') is-invalid @enderror" >
 
                         @error('name')
                         <div class="btn text-danger">{{ $message }}</div>
@@ -29,7 +29,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">$</span>
                         </div>
-                        <input type="text" name="price" class="form-control" aria-label="Amount (to the nearest dollor)">
+                        <input value="{{$menu->price}}" type="text" name="price" class="form-control" aria-label="Amount (to the nearest dollor)" >
                         <div class="input-group-prepend">
                             <span class="input-group-text">.00</span>
                         </div>
@@ -51,19 +51,21 @@
                     <div class="form-group">
                         <label for="Description" >Description</label>
 
-                            <input for="Description" type="textarea" class="form-control" name="description"placeholder="Description....">
+                        <input for="Description" type="textarea" class="form-control" name="description" value="{{$menu->description}}">
 
                     </div>
-<div class="form-group">
-    <label for="category" >Category</label>
-    <select class="form-control" name="category_id" >
-        @foreach(\App\Models\Category::all() as $category)
-            <option value="{{$category->id}}">{{$category->name}}</option>
-        @endforeach
-    </select>
-</div>
+                    <div class="form-group">
+                        <label for="category" >Category</label>
+                        <select class="form-control" name="category_id" >
 
-                    <button type="submit" class="btn btn-primary">Save</button>
+
+                            @foreach ($categories as $category)
+                            <option value="{{$category->id}}" {{$menu->category_id === $category->id ? 'selected' : ''}} >{{$category->name}}</option>
+@endforeach
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-warning">Edit</button>
                 </form>
             </div>
 
