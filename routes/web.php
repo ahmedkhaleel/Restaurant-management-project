@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Cashier\CashierController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Management\CategoryController;
 use App\Http\Controllers\Management\MenuController;
@@ -25,7 +26,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
+Route::get('/cashier', [CashierController::class, 'index'])->name('cashier.index');
+Route::get('/cashier/getTables',[CashierController::class, 'getTables']);
 Route::get('/management',[ManagementController::class,'index'])->name('management.index');
 Route::resource('management/category',CategoryController::class);
 Route::resource('management/menu',MenuController::class);

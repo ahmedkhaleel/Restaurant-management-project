@@ -25,8 +25,8 @@
 
 
                            <div class="col col-sm-4">
-                               <a href="#">
-                               <h4>cachier</h4>
+                               <a href="{{route('cashier.index')}}">
+                               <h4>cashier</h4>
                                <img  width="75px" src="{{asset('images/cashier.svg')}}">
                                </a>
                            </div>
