@@ -27,6 +27,7 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/cashier', [CashierController::class, 'index'])->name('cashier.index');
+Route::get('/cashier/getMenuByCategory/{category_id}',[CashierController::class, 'getMenuByCategory']);
 Route::get('/cashier/getTables',[CashierController::class, 'getTables']);
 Route::get('/management',[ManagementController::class,'index'])->name('management.index');
 Route::resource('management/category',CategoryController::class);

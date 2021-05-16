@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Cashier;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Menu;
 use App\Models\Table;
 use Illuminate\Http\Request;
 
 class CashierController extends Controller
 {
     public function index(){
-        return view('cashier.index');
+        $categories = Category::all();
+        return view('cashier.index',compact('categories'));
     }
 
     public function getTables(){
@@ -26,5 +29,26 @@ class CashierController extends Controller
         }
 
         return $html;
+    }
+
+    public function getMenuByCategory($category_id){
+        $menus = Menu::where('category_id', $category_id)->get();
+        $html = '';
+        foreach($menus as $menu){
+
+            $html .='
+            <div class="col-md-3 text-center " >
+            <a class="btn btn-outline-secondary" data-id="'.$menu->id.'">
+            <img class="img-fluid "  src="'.url('/menu_images/'.
+                    $menu->image).'">
+            <br>
+           '.$menu->name.'
+            <br>
+            $'.number_format($menu->price).'
+            </a>
+            </div>
+            ';
+        }
+return $html;
     }
 }
