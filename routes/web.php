@@ -6,6 +6,7 @@ use App\Http\Controllers\Management\CategoryController;
 use App\Http\Controllers\Management\MenuController;
 use App\Http\Controllers\Management\TableController;
 use App\Http\Controllers\ManagementController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,3 +38,4 @@ Route::get('/management',[ManagementController::class,'index'])->name('managemen
 Route::resource('management/category',CategoryController::class);
 Route::resource('management/menu',MenuController::class);
 Route::resource('management/table',TableController::class);
+
