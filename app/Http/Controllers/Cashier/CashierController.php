@@ -171,7 +171,7 @@ class CashierController extends Controller
         $html .= '<hr>';
         $html .= '<h2>Total Amount : $ ' . $sales->total_price . '</h2>';
         if ($showBtnPayment) {
-            $html .= '<button data-id="' . $sale_id . '" data-totalAmount="'.$sales->total_price.'" class=" btn btn-success btn-block btn-payment " data-toggle="modal" data-target="#exampleModal">
+            $html .= '<button data-id="' . $sale_id . '" data-totalAmount="'.$sales->total_price.'" class=" btn btn-success btn-block btn-payment" data-toggle="modal" data-target="#exampleModal">
 Payment</button>';
 
         } else {
