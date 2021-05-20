@@ -33,6 +33,7 @@ Route::post('/cashier/orderFood',[CashierController::class, 'orderFood']);
 Route::get('/cashier/getTables',[CashierController::class, 'getTables']);
 Route::post('/cashier/deleteSaleDetail',[CashierController::class,'deleteSaleDetail']);
 Route::post('/cashier/confirmOrderStatus',[CashierController::class,'confirmOrderStatus']);
+Route::post('/cashier/savePayment',[CashierController::class,'savePayment']);
 Route::get('/cashier/getSaleDetailsByTable/{table_id}',[CashierController::class, 'getSaleDetailsByTable']);
 Route::get('/management',[ManagementController::class,'index'])->name('management.index');
 Route::resource('management/category',CategoryController::class);

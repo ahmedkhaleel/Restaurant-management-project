@@ -180,7 +180,7 @@
                 $(".changeAmount").html("Total Amount : $ " + changeAmount);
                 //check if cashier enter thme right amount ,then enable or disable save payment button
                 if(changeAmount >= 0) {
-                    $('.btn-save-payment').prop('disabled',false);
+                    $('.btn-save-payment').prop('disabled',false);;
                 }else{
                     $('.btn-save-payment').prop('disabled',true);
                 }
@@ -191,8 +191,22 @@
                 var receivedAmount = $("#received-amount").val();
                 var paymentType = $("#payment-type").val();
                 var saleId = SALE_ID;
-                alert(saleId);
-            })
+
+                $.ajax({
+                    type:"POST",
+                    data: {
+                        "_token" : $('meta[name="csrf-token"]').attr('content'),
+                        "saleId" : saleId,
+                        "receivedAmount":receivedAmount,
+                        "paymentType":paymentType,
+                    },
+                    url: "/cashier/savePayment",
+                    success:function(data){
+                        window.location.href= data;
+                    }
+                })
+            });
+
 
         });
     </script>
