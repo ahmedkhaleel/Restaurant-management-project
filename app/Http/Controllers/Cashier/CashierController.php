@@ -227,8 +227,21 @@ public function savePayment(Request $request){
         $table = Table::find($sale->table_id);
         $table->status = "available";
         $table->save();
-        return "/cashier";
+        return "/cashier/showReceipt/".$saleId;
 
+    }
+
+
+    public function showReceipt($saleId){
+        $sale = Sale::find($saleId);
+        $saleDetails = SaleDetail::where('sale_id', $saleId)->get();
+        return view('cashier.showReceipt',compact('sale','saleDetails'));
+    }
+    public function getUserEmails($users)
+    {
+        return $users->map(function ($user) {
+            return $user->email;
+        });
     }
 
 }

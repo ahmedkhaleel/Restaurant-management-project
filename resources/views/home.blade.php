@@ -15,30 +15,30 @@
                     @endif
 
                    <div class="row text-center">
-
-                           <div  class="col " >
+                    @if(Auth::user()->checkAdmin())
+                           <div  class="col col-md-4" >
                                <a href="{{route('management.index')}}">
                                <h4>management</h4>
                                <img  width="75px" src="{{asset('images/dashboard.svg')}}">
                                </a>
                            </div>
+                       @endif
 
-
-                           <div class="col col-sm-4">
+                           <div class="col col-md-4">
                                <a href="{{route('cashier.index')}}">
                                <h4>cashier</h4>
                                <img  width="75px" src="{{asset('images/cashier.svg')}}">
                                </a>
                            </div>
 
-
-                           <div  class="col col-sm-4" >
-                               <a href="#">
+                          @if (Auth::user()->checkAdmin())
+                           <div  class="col col-md-4" >
+                               <a href="{{route('report.index')}}">
                                <h4>Report</h4>
                                <img  width="75px" src="{{asset('images/statistics.svg')}}">
                                </a>
                            </div>
-
+                        @endif
                    </div>
                 </div>
             </div>

@@ -12,7 +12,7 @@
         <a href="{{route('table.index')}}" class="list-group-item list-group-item-action">
             <i class="fas fa-chair"></i>
             Table</a>
-        <a href="" class="list-group-item list-group-item-action">
+        <a href="{{route('user.index')}}" class="list-group-item list-group-item-action">
             <i class="fas fa-users"></i>
             User</a>
     </div>
